@@ -22,9 +22,12 @@ try {
     console.log(e);
 }
 
-//declaracao dos models
-const User = require("./models/user-model");
+//models declaration
+const User = require('./models/user-model');
 
+//routes declaration
+const userRoute = require('./routes/user-route');
+const indexRoute = require('./routes/index-route');
 
 
 app.use(function (req, res, next) {
@@ -33,5 +36,9 @@ app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     next();
 });
+
+app.use('/', indexRoute);
+app.use('/user', userRoute);
+
 
 module.exports = app;
